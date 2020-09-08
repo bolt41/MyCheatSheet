@@ -1,0 +1,15 @@
+Устанавливаем nginx
+
+yum install epel-release
+yum install nginx
+systemctl start nginx
+systemctl enable nginx
+
+настраиваем брэндмауэр:
+sudo firewall-cmd --zone=public --add-service=http --permanent
+sudo firewall-cmd --zone=public --add-service=https --permanent
+sudo firewall-cmd --reload
+
+НАСТРОЙКА РАСПОЛОЖЕНИЯ ФАЙЛОВ САЙТА
+
+в конфигурационном файле /etc/nginx/nginx.conf найти секцию server и замените значение параметра root на /var/www/html/default:
